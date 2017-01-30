@@ -1,0 +1,39 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using FirstEPiServerSite
+@using FirstEPiServerSite.Helpers
+@using FirstEPiServerSite.Models.Blocks
+
+
+
+@model FirstEPiServerSite.Models.Pages.StartPage
+
+@{ 
+    List<ProductTeaserBlock> lstProducts = QueryHelper.GetProductBlocks(Convert.ToInt32(Session["ProductCategoryId"].ToString()));
+}
+@*<h1>@Html.PropertyFor(m => m.Header)</h1>*@
+<h1 @Html.EditAttributes(x => x.Header)>@Model.Header</h1>
+<div class="row">
+
+    @Html.PropertyFor(m => m.MainBody)
+
+    @*@Html.PropertyFor(x => x.MainContentArea, new { CssClass = "row", Tag = Global.ContentAreaTags.TwoThirdsWidth })*@
+    @foreach (var product in lstProducts)
+    {
+        string productDetailsLink =product.Url.ToString() +"?pGuId=" + (product as IContent).ContentGuid.ToString();
+        <div class="col-sm-6 col-md-4">
+            <a href="@productDetailsLink">
+                <b style="margin-left:50px">@product.Header</b>
+                <div class="row">
+                    <img src="@Url.ContentUrl(product.Image)" style="width:300px; height:300px" />
+                </div>
+            </a>
+        </div>
+    }
+</div>
+<div class="row">
+    
+</div>
+
+
+

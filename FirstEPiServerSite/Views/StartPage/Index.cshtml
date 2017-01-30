@@ -1,0 +1,14 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using FirstEPiServerSite
+
+
+@model FirstEPiServerSite.Models.Pages.StartPage
+<h1>@Html.PropertyFor(m=> m.Header)</h1>
+<div class="row">
+
+  @Html.PropertyFor(m => m.MainBody)
+</div>
+<div class="row">
+    @Html.PropertyFor(x => x.MainContentArea)
+</div>

@@ -1,0 +1,23 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using FirstEPiServerSite.Models.Blocks
+@model FirstEPiServerSite.Models.Blocks.ProductTeaserBlock
+
+    @*<h1 @Html.EditAttributes(x => x.Header)>@Model.Header</h1>*@ 
+    <h1 data-epi-property-name="Header" data-epi-use-mvc="True"><p>@Model.Header</p></h1>
+    @if (Model != null)
+    {
+        <div class="row">
+                       @Html.PropertyFor(m => m.Description)
+        </div>
+        <div class="row">
+            <img src="@Url.ContentUrl(Model.Image)" style="width:auto; height:300px" />
+        </div>
+    }
+    else
+    {
+        <h3>No product details found</h3>
+    }
+
+
+

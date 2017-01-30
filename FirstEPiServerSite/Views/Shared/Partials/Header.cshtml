@@ -1,0 +1,45 @@
+﻿@using EPiServer.Editor
+@using EPiServer.Core
+@using EPiServer.Web
+@using FirstEPiServerSite.Helpers
+
+
+<div class="container-fluid text-right">
+    @if (Session["UserName"] == null)
+    {
+        <p><a href="/login">Login</a><br /> <a href="/en/register">Register</a> </p>
+    }
+    else
+    {
+        var userName = Session["UserName"];
+
+
+        <p> Welcome  @userName ! <a href="/login.html">Logout</a> </p>
+    }
+
+</div>
+
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <h3><a class="navbar-brand" href="@SiteDefinition.Current.SiteUrl">Tieto Gadget</a></h3>
+        </div>
+
+        @{
+            var lstsitemap = new string[] { "Mobiles", "Laptops", "Desktops", "Cameras", "TVs" };
+        }
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <ul class="nav navbar-nav navbar-right">
+            @Html.MenuList(SiteDefinition.Current.StartPage,@<li class="@(item.Selected ? "active" : null)">@Html.PageLink(item.Page, null, new { @class = "" })</li>)
+        </ul>
+
+
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+

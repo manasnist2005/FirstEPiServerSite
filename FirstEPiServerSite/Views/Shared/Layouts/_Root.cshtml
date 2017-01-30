@@ -1,0 +1,45 @@
+﻿@using System.Web.Optimization
+@using EPiServer.Framework.Web.Mvc.Html
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=10" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TietoGadgets</title>
+        @Html.CanonicalLink()
+        @Html.AlternateLinks()
+        @Styles.Render("~/bundles/css")
+        @Scripts.Render("~/bundles/js")
+        @*@Html.RequiredClientResources("Header") Enable components to require resources. For an example, see the view for VideoBlock.*@
+    </head>
+
+    <body>
+        <div class="container">
+           @{
+               Html.RenderPartial("Partials/Header");
+
+           }
+            @Html.RequiredClientResources("Partials/Header")
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    @RenderBody()
+                </div>
+            </div>
+            @*@Html.RenderEPiServerQuickNavigator()
+            @Html.FullRefreshPropertiesMetaData()*@
+            
+                @*@if(!Model.Layout.HideHeader)
+                {
+                    Html.RenderPartial("Header", Model);
+                }
+
+                @if(!Model.Layout.HideHeader)
+                {
+                    Html.RenderPartial("Footer", Model);
+                }*@
+            
+            @*@Html.RequiredClientResources("Footer")*@
+</body>
+</html>

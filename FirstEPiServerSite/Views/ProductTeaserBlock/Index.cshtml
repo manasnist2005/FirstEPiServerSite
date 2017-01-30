@@ -1,0 +1,14 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model FirstEPiServerSite.Models.Blocks.ProductTeaserBlock
+
+    <div class="col-sm-6 col-md-4">
+        <a href="@Model.Url.ToString()">
+            <b style="margin-left:50px">@Html.PropertyFor(model => model.Header) </b>
+            <div class="row">
+                <img src="@Url.ContentUrl(Model.Image)" style="width:300px; height:300px" />
+            </div>         
+        </a>        
+    </div>
+
